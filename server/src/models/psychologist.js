@@ -32,6 +32,11 @@ const Psychologist = sequelize.define(
         emailAddress: {
             type: DataTypes.STRING(50),
         },
+    },
+        {
+        tableName: 'psychologist',
+        underscored: true,
+        timestamps: false
     }
 );
 
