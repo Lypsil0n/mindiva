@@ -1,8 +1,10 @@
-import express, { application } from 'express'
-import { getAllPsychologists } from '../api/psychologistController.js'
+import express from 'express'
+import { createPsychologist, getAllPsychologists, getPsychologistByVerbalId } from '../api/psychologistController.js'
 
 const router = express.Router()
 
 router.get('/', getAllPsychologists)
+router.get('/:verbalId', getPsychologistByVerbalId)
+router.post('/create', createPsychologist)
 
 export default router

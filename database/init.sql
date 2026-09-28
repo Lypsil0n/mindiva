@@ -21,5 +21,7 @@ CREATE TABLE psychologist (
     postal_code VARCHAR(50),
     city VARCHAR(50),
     phone_number VARCHAR(50),
-    email_address VARCHAR(50)
+    email_address VARCHAR(50),
+    physical_meetings_avail BOOLEAN,
+    digital_meetings_avail BOOLEAN
 );

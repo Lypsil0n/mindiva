@@ -17,6 +17,8 @@ app.get("/", async (req, res) => {
     res.json({"status": "ok"})
 })
 
+app.use(express.json());
+
 app.use('/api/v1/psychologists', psychologistRoutes)
 
 app.listen(port, () => {

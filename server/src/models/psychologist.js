@@ -13,24 +13,39 @@ const Psychologist = sequelize.define(
         },
         verbalId: {
             type: DataTypes.STRING(50),
+            allowNull: false,
         },
         psycName: {
             type: DataTypes.STRING(50),
+            allowNull: false,
         },
         streetAddress: {
             type: DataTypes.STRING(50),
+            allowNull: false,
         },
         postalCode: {
             type: DataTypes.STRING(50),
+            allowNull: false,
         },
         city: {
             type: DataTypes.STRING(50),
+            allowNull: false,
         },
         phoneNumber: {
             type: DataTypes.STRING(50),
+            allowNull: false,
         },
         emailAddress: {
             type: DataTypes.STRING(50),
+            allowNull: false,
+        },
+        physicalMeetingsAvail: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
+        digitalMeetingsAvail: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
         },
     },
         {
