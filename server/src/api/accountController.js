@@ -1,5 +1,6 @@
 import Account from "../models/account.js";
 import { comparePassword, hashPassword } from "../utils/authUtil.js";
+import { uuidv7 } from "uuidv7";
 
 const createAccount = async (req, res) => {
     try {
@@ -27,11 +28,36 @@ const login = async (req, res) => {
         if (!correctPassword) {
             return res.status(401).json({"status": "error", "error": "invalid credentials"})
         }
-        res.json({"status": "ok", data: {"id": user.id}})
+
+        const token = btoa(uuidv7())
+        const tokenHash = await hashPassword(token)
+
+        user.tokenHash = tokenHash
+        user.save()
+
+        res.json({"status": "ok", data: {"id": user.id, "token": token}})
 
     } catch (error) {
         res.status(500).json({"status": "error", "error": error.message});
     }
 }
 
-export {createAccount, login}
+const logout = async (req, res) => {
+    try {
+        const user = await Account.findOne( {where: {email: req.body.email} } )
+
+        if (!user) {
+            return res.status(401).json({"status": "error", "error": "invalid credentials"})
+        }
+
+        user.tokenHash = null
+        user.save()
+
+        res.json({"status": "ok"})
+
+    } catch (error) {
+       res.status(500).json({"status": "error", "error": error.message}); 
+    }
+}
+
+export {createAccount, login, logout}
