@@ -6,8 +6,11 @@ export async function getPsychologistByVerbalId(verbalId: string) {
     })
 
     if (!res.ok) {
-        console.log(res)
-        throw new Error(`Failed to fetch`)
+        if (res.status == 404) {
+            return {
+                "error": res.status
+            }
+        }
     }
 
     return res.json()

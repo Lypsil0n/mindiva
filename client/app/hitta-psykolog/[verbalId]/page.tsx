@@ -1,4 +1,5 @@
 import { getPsychologistByVerbalId } from "@/app/lib/api/psychologists";
+import { redirect } from "next/navigation";
 
 export default async function Psykolog({params,}: {
         params: Promise<{ verbalId: string }>;
@@ -6,6 +7,10 @@ export default async function Psykolog({params,}: {
     const { verbalId } = await params;
 
     const psychologist = await getPsychologistByVerbalId(verbalId)
+
+    if (psychologist.error == 404) {
+        redirect("/hitta-psykolog")
+    }
 
     return (
         <div className="min-h-screen bg-gray-100 px-4 py-12">
