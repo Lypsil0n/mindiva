@@ -1,5 +1,5 @@
 import Account from "../models/account.js";
-import { comparePassword, hashPassword } from "../utils/authUtil.js";
+import { comparePassword, hashPassword } from "../utils/authUtils.js";
 import { uuidv7 } from "uuidv7";
 
 const createAccount = async (req, res) => {

@@ -25,3 +25,12 @@ CREATE TABLE psychologist (
     physical_meetings_avail BOOLEAN,
     digital_meetings_avail BOOLEAN
 );
+
+CREATE TABLE user_data (
+    id uuid PRIMARY KEY,
+    first_name VARCHAR(50),
+    identification_string VARCHAR(6),
+    allows_physical_meetings BOOLEAN,
+    allows_digital_meetings BOOLEAN
+
+)
