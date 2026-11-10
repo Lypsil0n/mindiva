@@ -9,7 +9,7 @@ export default async function Psykolog({params,}: {
     const psychologist = await getPsychologistByVerbalId(verbalId)
 
     if (psychologist.error == 404) {
-        redirect("/hitta-psykolog")
+        redirect("/hjalp/psykolog")
     }
 
     return (
@@ -18,12 +18,20 @@ export default async function Psykolog({params,}: {
                 {psychologist.psycName}
             </h2>
 
-        <h2 className="text-2xl mt-2 text-gray-900">
+            <h2 className="text-2xl mt-2 text-gray-900">
                 {psychologist.streetAddress}
             </h2>
 
-        <h2 className="text-2xl mt-2 text-gray-900">
+            <h2 className="text-2xl mt-2 text-gray-900">
                 {psychologist.postalCode} {psychologist.city}
+            </h2>
+
+            <h2 className="text-2xl mt-2 text-gray-900">
+                {psychologist.emailAddress}
+            </h2>
+
+            <h2 className="text-2xl mt-2 text-gray-900">
+                {psychologist.phoneNumber}
             </h2>
             
         </div>
